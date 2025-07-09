@@ -26,7 +26,7 @@ function App() {
   useEffect(() => {
     if (deckId) {
       setLoadingDeck(true);
-      fetch(`http://localhost:8080/deck/${deckId}`)
+      fetch(`https://garbomagic.onrender.com/${deckId}`)
         .then((res) => res.json())
         .then((deckData) => {
           setDeckName(deckData.name || "Your Deck");
@@ -55,7 +55,7 @@ function App() {
           searchTerm.trim()
         )}&limit=${LIMIT}&offset=${reset ? 0 : offset}`;
       } else {
-        url = `http://localhost:8080/cards?limit=${LIMIT}&offset=${reset ? 0 : offset}`;
+        url = `https://garbomagic.onrender.com/cards?limit=${LIMIT}&offset=${reset ? 0 : offset}`;
       }
 
       fetch(url)
