@@ -69,7 +69,7 @@ app.get('/cards', (req, res) => {
     });
   });
 
-  app.get('/decks', (req, res) => {
+  app.get('/decks2', (req, res) => {
     const query = `SELECT id, name, imageUrls FROM Decks`;
   
     db.all(query, [], (err, rows) => {
