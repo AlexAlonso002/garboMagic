@@ -8,7 +8,7 @@ function Play() {
   const navigate = useNavigate(); // <-- initialize navigate here
 
   useEffect(() => {
-    fetch("https://garbomagic.onrender.com/decks")
+    fetch("https://garbomagic.onrender.com/decks2")
       .then((res) => res.json())
       .then(setDecks)
       .catch((err) => console.error("Failed to fetch decks", err));
