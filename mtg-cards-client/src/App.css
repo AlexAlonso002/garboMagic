@@ -1,0 +1,632 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+/* App.css */
+
+.app-container {
+  display: flex;
+  padding: 2rem;
+  font-family: Arial, sans-serif;
+  gap: 2rem;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+.gallery-container {
+  flex: 3;
+  overflow-y: auto;
+  height: 100%;
+}
+
+.search-input {
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  width: 100%;
+  font-size: 1rem;
+  box-sizing: border-box;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 200px);
+  gap: 10px;
+}
+
+.card-image {
+  object-fit: cover;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 200px;
+  height: 300px;
+}
+
+.loading-text,
+.no-more-text {
+  margin-top: 1rem;
+  font-style: italic;
+  color: #555;
+}
+
+.deck-sidebar {
+  flex: 1;
+  border-left: 2px solid #ddd;
+  padding-left: 1rem;
+  overflow-y: auto;
+  max-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.deck-name-input {
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 0.3rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.deck-title {
+  margin: 0;
+}
+
+.deck-empty-text {
+  font-style: italic;
+  color: #777;
+}
+
+
+.save-deck-button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: none;
+  background-color: #28a745;
+  color: #fff;
+  cursor: pointer;
+  user-select: none;
+  width: 100%;
+  max-width: 300px;
+  margin-top: auto;
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center; /* horizontally center */
+  align-items: center;     /* vertically center */
+
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+  cursor: zoom-out;
+}
+
+
+.modal-content {
+  max-width: 60vw;
+  max-height: 60vh;
+  padding: 0.75rem;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  cursor: default;
+  width: fit-content;  /* or fixed width */
+}
+.modal-close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.modal-image {
+  max-width: 55vw;    /* smaller image width */
+  max-height: 50vh;   /* smaller image height */
+  margin-bottom: 0.75rem;
+}
+
+.modal-add-button,
+.modal-remove-button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  user-select: none;
+  width: 100%;
+  max-width: 300px;
+}
+
+.modal-add-button {
+  background-color: #007bff;
+}
+
+.modal-remove-button {
+  background-color: #dc3545;
+}
+
+
+.deck-list-container {
+  padding: 2rem;
+  font-family: Arial, sans-serif;
+}
+
+.deck-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* a bit wider */
+  gap: 1.5rem;
+}
+
+.deck-card {
+  padding: 1.5rem; /* more padding */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #f9f9f9;
+  text-align: center;
+}
+
+.deck-preview {
+  display: flex;
+  gap: 8px; /* more gap */
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem; /* a bit more space below */
+}
+
+.deck-preview-image {
+  width: 70px;  /* bigger width */
+  height: 105px; /* bigger height to keep aspect ratio */
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.card-container {
+  position: relative;
+  display: inline-block;
+}
+
+.card-image {
+  width: 80px;
+  height: 112px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.hover-popup {
+  position: absolute;
+  top: -150%;  /* adjust as needed to place above */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  padding: 10px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  display: none;
+  z-index: 20;
+}
+
+.card-container:hover .hover-popup {
+  display: block;
+}
+
+.hover-popup img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+.hover-popup button {
+  margin-top: 10px;
+  margin-right: 10px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+
+.arena-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* RED Top Half */
+.red-top-half {
+  flex: 1;
+  border-bottom: 0.3vh solid red;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 1%;
+  position: relative;
+}
+
+.red-side-panel {
+  position: absolute;
+  top: 2%;
+  left: 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1vh;
+  z-index: 20;
+}
+
+/* Red Land Area */
+.red-land-area {
+  position: absolute;
+  top: 2%;
+  left: 60%;
+  width: 35%;
+  min-height: 40%;
+  border: 0.3vh dashed red;
+  border-radius: 1vh;
+  background-color: #ffe6e6;
+  padding: 1%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5%;
+  color: red;
+  font-weight: bold;
+  z-index: 10;
+}
+
+/* Red Artifact Area */
+.red-artifact-area {
+  position: absolute;
+  top: 2%;
+  left: 25%;
+  width: 32%;
+  min-height: 40%;
+  border: 0.3vh dashed #ff9999;
+  border-radius: 1vh;
+  background-color: #ffd9d9;
+  padding: 1%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5%;
+  color: darkred;
+  font-weight: bold;
+  z-index: 10;
+}
+
+/* Red Creature Area */
+.red-creature-area {
+  position: absolute;
+  top: 53%;
+  left: 25%;
+  width: 70%;
+  min-height: 33%;
+  border: 0.3vh dashed darkred;
+  border-radius: 1vh;
+  background-color: #ffe6e6;
+  padding: 1%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5%;
+  color: red;
+  font-weight: bold;
+  z-index: 10;
+}
+
+/* Deck Styles */
+.red-deck img,
+.red-discard-pile img,
+.blue-discard-pile img,
+.deck-image {
+  width: 6vw;
+  height: 9vw;
+  border-radius: 1vh;
+  border: 0.2vh solid red;
+  object-fit: cover;
+}
+
+.red-discard-pile{
+  position: fixed;
+  top: 22%;    /* example: 10% from the top of the viewport */
+  left: 7%;  
+  width: 6vw;
+  height: 9vw;
+} 
+
+.red-discard-empty,
+.blue-discard-empty {
+  width: 6vw;
+  height: 9vw;
+  border: 0.2vh dashed gray;
+  border-radius: 1vh;
+}
+
+/* BLUE Bottom Half */
+.blue-bottom-half {
+  flex: 1;
+  border-top: 0.3vh solid lightblue;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 1%;
+  position: relative;
+}
+
+/* Blue Land Area */
+.blue-land-area {
+  position: absolute;
+  bottom: 2%;
+  left: 38%;
+  width: 35%;
+  min-height: 50%;
+  border: 0.3vh dashed lightblue;
+  border-radius: 1vh;
+  background-color: #e6f0ff;
+  padding: 1%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5%;
+  z-index: 10;
+  color: blue;
+  font-weight: bold;
+}
+
+/* Blue Artifact Area */
+.blue-artifact-area {
+  position: absolute;
+  bottom: 2%;
+  left: 1%;
+  width: 34%;
+  min-height: 50%;
+  border: 0.3vh dashed #a0a0a0;
+  border-radius: 1vh;
+  background-color: #d9d9d9;
+  padding: 1%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5%;
+  z-index: 10;
+  color: #555;
+  font-weight: bold;
+}
+
+/* Blue Creature Area */
+.blue-creature-area {
+  position: absolute;
+  bottom: 60%;
+  left: 1%;
+  width: 70%;
+  min-height: 35%;
+  border: 0.3vh dashed green;
+  border-radius: 1vh;
+  background-color: #e6ffe6;
+  padding: 1%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5%;
+  z-index: 10;
+  color: green;
+  font-weight: bold;
+}
+
+/* Battlefield Area */
+.battlefield-area {
+  flex: 1;
+  height: 100%;
+  border: 0.3vh dashed #ccc;
+  margin-right: 2%;
+  border-radius: 1vh;
+  position: relative;
+  z-index: 5;
+  padding: 1%;
+  color: #888;
+}
+
+/* Hand Display */
+.hand-display {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5vw;
+  padding: 1vw;
+  z-index: 30;
+}
+
+.hand-display img {
+  width: 6vw;
+  height: 9vw;
+  border-radius: 1vh;
+  border: 0.2vh solid #ccc;
+  cursor: grab;
+}
+
+
+
+/* 2) Remove fixed from the discard pile and assign it to the grid */
+.deck-controls {
+  position: fixed;
+  right: 10%;
+  bottom: 5%;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "deck discard"
+    "buttons buttons";
+  gap: 10px;
+  z-index: 1000;
+}
+
+/* Deck image in the top‑left cell */
+.deck-image {
+  grid-area: deck;
+  position: static;    /* let it flow into the grid */
+  width: 75px;
+  height: 75px;
+}
+
+/* Discard pile in the top‑right cell */
+.blue-discard-pile {
+  grid-area: discard;
+  position: static;    /* let it flow into the grid */
+  width: 6vw;          /* your original sizing */
+  height: 9vw;
+  cursor: pointer;
+}
+
+/* Buttons span the entire bottom row */
+.button-container {
+  grid-area: buttons;
+  display: grid;
+  grid-template-columns: repeat(2, 100px);
+  grid-template-rows:    repeat(2, 40px);
+  gap: 10px;
+  width: 210px;  /* 2×100 + gap */
+  height: 90px;  /* 2×40 + gap */
+}
+
+/* 5) Your button styles remain the same */
+.deck-button {
+  width: 100px;
+  height: 40px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  color: white;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* color variants */
+.draw-button          { background-color: #007bff; }
+.open-deck-button     { background-color: #28a745; }
+.open-discard-button  { background-color: #ffc107; color: black; }
+.toggle-hand-button   { background-color: #6c757d; }
+/* Rotate Style */
+.rotated {
+  transform: rotate(90deg);
+}
+.red-land-area img,
+.red-artifact-area img,
+.red-creature-area img,
+.blue-land-area img,
+.blue-artifact-area img,
+.blue-creature-area img {
+  width: 8%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 4px;
+  cursor: grab;
+  transition: transform 0.2s ease;
+  max-width: 100px; /* optional cap */
+}
+/* Modals */
+.modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.deck-discard-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  overflow-y: auto;
+  z-index: 1000;
+  padding: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.modal-card-image {
+  max-width: 80vw;
+  max-height: 70vh;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+  transition: transform 0.3s ease;
+}
+
+.deck-discard-modal img {
+  width: 90px;
+  height: 130px;
+  border-radius: 6px;
+  object-fit: cover;
+  cursor: pointer;
+}
+.tap-button {
+  margin-top: 2vh;
+  padding: 1vh 2vw;
+  font-size: 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 1vh;
+  cursor: pointer;
+  box-shadow: 0 0.2vh 0.5vh rgba(0, 0, 0, 0.3);
+}
+
+.tap-button:hover {
+  background-color: #0056b3;
+}
