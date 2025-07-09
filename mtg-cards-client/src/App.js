@@ -51,7 +51,7 @@ function App() {
 
       let url = "";
       if (searchTerm.trim()) {
-        url = `http://localhost:8080/cards/search?name=${encodeURIComponent(
+        url = `https://garbomagic.onrender.com/cards/search?name=${encodeURIComponent(
           searchTerm.trim()
         )}&limit=${LIMIT}&offset=${reset ? 0 : offset}`;
       } else {
@@ -153,7 +153,7 @@ function App() {
       return;
     }
     // If editing, update deck by id, else create new
-    const endpoint = deckId ? `http://localhost:8080/saveDeck/${deckId}` : "http://localhost:8080/saveDeck";
+    const endpoint = deckId ? `https://garbomagic.onrender.com/saveDeck/${deckId}` : "https://garbomagic.onrender.com/saveDeck";
 
     fetch(endpoint, {
       method: "POST",
