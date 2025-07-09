@@ -7,7 +7,7 @@ function Decks() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:8080/decks")
+    fetch("https://garbomagic.onrender.com/decks2")
       .then((res) => res.json())
       .then((data) => {
         console.log("Fetched decks:", data[0]?.id);
