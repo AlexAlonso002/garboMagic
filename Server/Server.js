@@ -4,6 +4,16 @@ const path = require('path');
 const cors = require('cors');
 
 const app = express();
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
 const PORT = 8080;
 var http = require('http').Server(app);
 const io = require("socket.io")(http, {cors: {origin: "*", methods: ["GET", "POST"]}});
