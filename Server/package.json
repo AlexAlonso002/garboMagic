@@ -1,0 +1,19 @@
+{
+    "name": "mtg-server",
+    "version": "1.0.0",
+    "description": "MTG card server with socket.io and sqlite3",
+    "main": "Server.js",
+    "scripts": {
+      "start": "node Server.js"
+    },
+    "engines": {
+      "node": ">=16"
+    },
+    "dependencies": {
+      "cors": "^2.8.5",
+      "express": "^4.18.2",
+      "socket.io": "^4.7.2",
+      "sqlite3": "^5.1.6"
+    }
+  }
+  
