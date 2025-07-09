@@ -49,7 +49,7 @@ function Arena() {
 
   useEffect(() => {
     if (!deckId) return;
-    fetch(`http://localhost:8080/deck/${deckId}`)
+    fetch(`https://garbomagic.onrender.com/deck2/${deckId}`)
       .then((res) => res.json())
       .then((data) => {
         const cards = Array.isArray(data.cards) ? data.cards : [];
@@ -68,7 +68,7 @@ function Arena() {
   }, [deckId]);
 
   useEffect(() => {
-    socket.current = io("http://localhost:8080"); // your server URL
+    socket.current = io("https://garbomagic.onrender.com"); // your server URL
 
     socket.current.on("connect", () => {
       socketIDRef.current = socket.current.id; // immediate update
